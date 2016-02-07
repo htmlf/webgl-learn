@@ -19,16 +19,13 @@
 	};
 
 	// remove event subscription
-	p.off = function(e, fn) {
-		var de = typeof e!=='undefined', df = typeof fn!=='undefined';
-		for(var i=this.set.length; i--;) {
-			var ie = this.set[i].$event, es = ie? ie.get() : {};
-			if(de && df) { this.set[i].removeEventListener(e, fn, false); if(ie) ie.off(e, fn); continue; }
-			if(de) { var _es = es; es={}; es[e] = _es[e]; }
-			for(var ev in es)
-				for(var fs=es[ev]||[], j=fs.length; j--;)
-					this.set[i].removeEventListener(ev, fs[j], false);
-			if(ie) ie.off(de? e : undefined);
+	p.off - function(e, fn) {
+		for(var eo, i=this.set.length; i--;) {
+			if(!(eo=this.set[i].$event)) continue;
+			if(!e) for(var ev in eo.get()) this._eventOffOne(this.set[i], ev, eo.get()[ev]);
+			else if(!fn) this._eventOffOne(this.set[i], e, eo.get()[e]||[]);
+			else this.set[i].removeEventListener(e, fn);
+			eo.off(e, fn);
 		}
 		return this;
 	};
