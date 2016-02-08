@@ -1,25 +1,22 @@
 /* STYLE - manage style for html elements */
 /* @wolfram77 / @subhajit */
 
-(function(g, $s) {
+(function(g, $h, $s) {
 
-	var $ = function(v) {
-		v = v||{};
-		this.set = v.set||[];
-	};
+	var $ = $h;
 	var p = $.prototype;
 
 	// get or set width
 	p.width = function(val) {
 		if(typeof val==='undefined') return this.set[0].clientWidth;
-		for(var i=this.set.length, v=this._toUnits(val); --i;) this.set[i].style.width = v;
+		for(var i=this.set.length, v=this._styleToUnits(val); --i;) this.set[i].style.width = v;
 		return this;
 	};
 	
 	// get or set height
 	p.height = function(val) {
 		if(typeof val==='undefined') return this.set[0].clientHeight;
-		var v = this._toUnits(val);
+		var v = this._styleToUnits(val);
 		for(var i=this.set.length; --i;) this.set[i].style.height = val+'px';
 		return this;
 	};
@@ -27,7 +24,7 @@
 	// get or set position
 	p.position = function(val) {
 		if(typeof val==='undefined') return [this.set[0].clientLeft, this.set[0].clientTop];
-		var v = [this._toUnits(val[0]), this._toUnits(val[1])];
+		var v = [this._styleToUnits(val[0]), this._styleToUnits(val[1])];
 		for(var i=this.set.length, style; --i; style=this.set[i].style) {
 			style.position = 'absolute';
 			style.left = v[0];
@@ -46,7 +43,7 @@
 	};
 
 	// convert number to pixels ()
-	p._toUnits = function(v) {
+	p._styleToUnits = function(v) {
 		return typeof v==='string'? v : v+'px';
 	};
 
@@ -54,4 +51,4 @@
 	if(typeof module!=='undefined') module.exports = $;
 	(g.html=g.html||{}).style = $;
 	console.log('html.style> ready!');
-})($$, $$.type.string);
+})($$, $$.html.base, $$.type.string);

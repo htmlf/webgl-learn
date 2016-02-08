@@ -1,12 +1,9 @@
 /* MODIFY - modify the html document structure */
 /* @wolfram77 / @subhajit */
 
-(function(g, $s, $a) {
+(function(g, $h) {
 
-	var $ = function(v) {
-		v = v||{};
-		this.set = v.set||[];
-	};
+	var $ = $h;
 	var p = $.prototype;
 
 	// add elements
@@ -32,4 +29,4 @@
 	if(typeof module!=='undefined') module.exports = $;
 	(g.html=g.html||{}).modify = $;
 	console.log('html.modify> ready!');
-})($$);
+})($$, $$.html.base);

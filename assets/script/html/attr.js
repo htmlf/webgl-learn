@@ -1,12 +1,9 @@
 /* ATTR - manage attributes of html elements */
 /* @wolfram77 / @subhajit */
 
-(function(g, $s, $a) {
+(function(g, $h) {
 
-	var $ = function(v) {
-		v = v||{};
-		this.set = v.set||[];
-	};
+	var $ = $h;
 	var p = $.prototype;
 
 	// get all, get, set or remove attribute
@@ -48,4 +45,4 @@
 	if(typeof module!=='undefined') module.exports = $;
 	(g.html=g.html||{}).attr = $;
 	console.log('html.attr> ready!');
-})($$);
+})($$, $$.html.base);

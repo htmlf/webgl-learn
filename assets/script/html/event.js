@@ -1,12 +1,9 @@
 /* EVENT - manage events with html elements */
 /* @wolfram77 / @subhajit */
 
-(function(g, $e) {
+(function(g, $h, $e) {
 
-	var $ = function(v) {
-		v = v||{};
-		this.set = v.set||[];
-	};
+	var $ = $h;
 	var p = $.prototype;
 
 	// add event subscription
@@ -46,4 +43,4 @@
 	if(typeof module!=='undefined') module.exports = $;
 	(g.html=g.html||{}).event = $;
 	console.log('html.event> ready!');
-})($$, $$.code.event);
+})($$, $$.html.base, $$.code.event);
