@@ -13,7 +13,7 @@
 	};
 
 	// rename keys of object
-	$.krename = function(dst, src, fmt) {
+	$.renameKeys = function(dst, src, fmt) {
 		if(typeof fmt === 'string') for(var k in src)
 			dst[fmt.replace(/%i/g, k)] = src[k];
 		else for(var k in src)
@@ -21,30 +21,17 @@
 		return dst;
 	};
 
-	// merge properties only
-	$.merge = function(dst, src) {
+	// merge properties
+	$.merge = function(dst, src, all) {
 		for(var k in src)
-			if(src.hasOwnProperty(k)) dst[k] = src[k];
+			if(all || src.hasOwnProperty(k)) dst[k] = src[k];
 		return dst;
 	};
 
-	// merge both properties and prototype
-	$.mergeAll = function(dst, src) {
-		for(var k in src)
-			dst[k] = src[k];
-		return dst;
-	};
-
-	// merge prototype only
-	$.mergeProt = function(dst, src) {
-		this.mergeAll(dst.prototype, src.prototype);
-		return dst;
-	};
-
-	// inherit an function (as class)
-	$.inherit = function(dst, src) {
-		$.mergeProt(dst, src);
-		dst.prototype.$super = src;
+	// inherit properties of a class
+	$.inherit = function(dst, src, init) {
+		$.merge(dst.prototype, src.prototype, true);
+		if(init) dst.prototype.$super = src;
 		return dst;
 	};
 

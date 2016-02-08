@@ -46,4 +46,4 @@
 	if(typeof module!=='undefined') module.exports = $;
 	(g.html=g.html||{}).event = $;
 	console.log('html.event> ready!');
-})($$, $$.type.event);
+})($$, $$.code.event);

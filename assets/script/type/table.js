@@ -5,17 +5,17 @@
 
 	var $ = {};
 
-	// column names
+	// get column names
 	$.cols = function(t) {
 		return Object.keys(t.length!==undefined? (t[0]||{}): t);
 	};
 
-	// row count
+	// get row count
 	$.rows = function(t) {
 		return t.length===undefined? (t[Object.keys(t)[0]||' ']||[]).length : t.length;
 	};
 
-	// column wise data
+	// get column wise data
 	$.colwise = function(t, cs) {
 		if(!t.length) return t.length===0? {} : (t||{});
 		cs = cs || Object.keys(t[0]);
@@ -27,7 +27,7 @@
 		return dst;
 	};
 
-	// row wise data
+	// get row wise data
 	$.rowwise = function(t, cs) {
 		if(t.length>=0) return t;
 		cs = cs || Object.keys(t);

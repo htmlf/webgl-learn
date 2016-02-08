@@ -5,7 +5,7 @@
 
 	var $ = {};
 
-	// fill values
+	// fill with value
 	if(!Array.prototype.fill) Array.prototype.fill = function(val, bgn, end) {
 		for(var i=bgn||0, I=end||this.length; i<I; i++)
 			this[i] = val;
@@ -22,7 +22,7 @@
 		return a;
 	};
 
-	// last item
+	// get last value
 	$.last = function(src) {
 		return src[src.length-1];
 	};
@@ -44,8 +44,8 @@
 		return dst;
 	};
 
-	// formatted join
-	$.fjoin = function(src, fmt, sep) {
+	// join in specified format
+	$.joinFmt = function(src, fmt, sep) {
 		for(var i=0, I=src.length, dst=''; i<I; i++)
 			dst += fmt.replace(/%i/g, src[i]) + (i===I-1? '' : sep||',');
 		return dst;

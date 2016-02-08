@@ -64,10 +64,10 @@
 	};
 
 	// ready
-	$o.mergeProt($, $$.html.attr);
-	$o.mergeProt($, $$.html.event);
-	$o.mergeProt($, $$.html.modify);
-	$o.mergeProt($, $$.html.style);
+	$o.inherit($, $$.html.attr);
+	$o.inherit($, $$.html.event);
+	$o.inherit($, $$.html.modify);
+	$o.inherit($, $$.html.style);
 	if(typeof module!=='undefined') module.exports = c;
 	(g.html=g.html||{}).index = c;
 	console.log('html.index ready!');

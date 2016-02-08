@@ -54,4 +54,4 @@
 	// ready
 	(g.code=g.code||{}).process = $;
 	console.log('code.process> ready!');
-})($$, $$.type.event);
+})($$, $$.code.event);

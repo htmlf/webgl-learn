@@ -60,6 +60,6 @@
 
 	// ready
 	if(typeof module!=='undefined') module.exports = $;
-	(g.type=g.type||{}).event = $;
-	console.log('type.event> ready!');
+	(g.code=g.code||{}).event = $;
+	console.log('code.event> ready!');
 })($$);
