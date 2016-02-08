@@ -15,6 +15,34 @@
 		return this;
 	};
 
+	// replace elements
+	p.replace = function(val) {
+		var v = this._modifyMakeFragment(val);
+		for(var i=this.set.length; i--;) this.set[i].parentNode.replaceChild(v, this.set[i]);
+		return this;
+	};
+
+	// remove elements
+	p.remove = function(shallow) {
+		for(var i=this.set.length; i--;) {
+			if(shallow) this._modifyInsertBefore(this.set[i].parent, this.set[i].childNodes, this.set[i]);
+			else this.set[i].remove();
+		}
+		return this;
+	};
+
+	// private: convert a set of elements to document fragment
+	p._modifyMakeFragment = function(elems) {
+		var frag = document.createDocumentFragment();
+		for(var i=0; i<elems.length; i++) frag.appendChild(elems[i]);
+		return frag;
+	};
+
+	// private: insert elements before reference
+	p._modifyInsertBefore = function(par, ins, ref) {
+		for(var i=0; i<ins.length; i++) par.insertBefore(ins[i], ref);
+	};
+
 	// private: get reference element
 	p._modifyRef = function(elem, dir) {
 		switch(dir) {
